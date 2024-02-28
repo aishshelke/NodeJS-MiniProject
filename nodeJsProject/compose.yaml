@@ -16,6 +16,16 @@ services:
     ports:
       - 3600:3600
 
+  mongodb:
+    image: mongo:5.0.9-focal
+    container_name: mongodb
+    ports:
+      - '27017:27017'
+    expose:
+      - '27017'
+    volumes:
+      - ./config/mongodb:/docker-entrypoint-initdb.d
+
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
 # start the database before your application. The `db-data` volume persists the
